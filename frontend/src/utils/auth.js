@@ -6,7 +6,7 @@ const checkResponse = (res) => {
     return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
 }
 
-export const BASE_URL = 'https://auth.nomoreparties.co';
+export const BASE_URL = 'https://api.frontend.timofeus91.nomoredomains.icu';
 
 export const register = (data) => {
     return fetch(`${BASE_URL}/signup`, {

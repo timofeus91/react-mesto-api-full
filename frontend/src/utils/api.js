@@ -120,6 +120,7 @@ const api = new Api({
     url: "https://api.frontend.timofeus91.nomoredomains.icu/", 
     headers: {
         "content-type": "application/json",
+        
     }
 });
 

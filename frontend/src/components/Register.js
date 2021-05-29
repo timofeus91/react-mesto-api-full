@@ -43,7 +43,7 @@ function Register(props) {
 
                 <button className="user-data-container__button" type='submit'>Зарегистрироваться</button>
             </form>
-            <Link className="user-data-container__link"  to="/sign-in">Уже зарегистрированы? Войти</Link>
+            <Link className="user-data-container__link"  to="/signin">Уже зарегистрированы? Войти</Link>
         </div>
     
     )

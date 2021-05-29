@@ -174,7 +174,7 @@ function App() {
             .then(() => {
                 
                 setIsAuthReqSuccess(true);
-                history.push('/sign-in');
+                history.push('/signin');
             })
             .catch((err) => {
                 console.log(`Произошла ошибка - ${err}`);
@@ -227,7 +227,7 @@ function App() {
         setLoggedIn(false);
         setEmail('');
         localStorage.removeItem('jwt');
-        history.push('/sign-in');
+        history.push('/signin');
         
     }
 
@@ -255,7 +255,7 @@ function App() {
              onCardDelete={handleCardDelete}
              />
 
-             <Route path="/sign-up">{
+             <Route path="/signup">{
                  loggedIn
                  ?
                  <Redirect to='/' />
@@ -264,7 +264,7 @@ function App() {
              }
              </Route>
 
-             <Route path="/sign-in">
+             <Route path="/signin">
                  { loggedIn 
                  ?
                   <Redirect to='/' />
