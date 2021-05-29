@@ -9,6 +9,7 @@ const helmet = require('helmet');
 const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const cors = require('cors');
 
 const { PORT = 3000 } = process.env;
 
@@ -19,6 +20,7 @@ const limiter = rateLimit({
 
 const app = express();
 
+app.use(cors());
 app.use(limiter);
 app.use(helmet());
 
