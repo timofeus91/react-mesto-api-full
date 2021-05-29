@@ -8,6 +8,7 @@ const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { PORT = 3000 } = process.env;
 
@@ -23,6 +24,8 @@ app.use(helmet());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(requestLogger);
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
@@ -51,6 +54,8 @@ app.use('/', require('./routes/users'));
 app.use('/', require('./routes/cards'));
 
 app.use('*', require('./routes/pageNotFound'));
+
+app.use(errorLogger);
 
 app.use(errors());
 
