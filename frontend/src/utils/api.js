@@ -14,6 +14,7 @@
         if (res.ok) {
             return res.json()
         }
+
         return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
     }
 
@@ -22,15 +23,7 @@
     getInitialCards() {
        return fetch(`${this._url}cards`, {
              headers: this._headers, 
-        }).then((res) => {
-            console.log(res);
-            if (res.ok) {
-                
-                return res.json()
-            }
-            
-            return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
-        });
+        }).then(this._checkResponse);
     }
 
     //метод по добавлению новой карточки
@@ -43,15 +36,7 @@
                   name: data.name,
                   link: data.link,
               })
-        }).then((res) => {
-            console.log(res);
-            if (res.ok) {
-                
-                return res.json()
-            }
-            
-            return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
-        });
+        }).then(this._checkResponse);
     }
 
     //метод по получению информации о пользователе
@@ -59,15 +44,7 @@
     getUserInfo() {
         return fetch(`${this._url}users/me`, {
               headers: this._headers,
-        }).then((res) => {
-            console.log(res);
-            if (res.ok) {
-                
-                return res.json()
-            }
-            
-            return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
-        });
+        }).then(this._checkResponse);
     }
 
     //метод по изменению информации о пользователе
@@ -80,15 +57,7 @@
                 name: data.name,
                 about: data.about,
               })
-        }).then((res) => {
-            console.log(res);
-            if (res.ok) {
-                
-                return res.json()
-            }
-            
-            return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
-        });
+        }).then(this._checkResponse);
     }
 
     //метод по смене аватарки
@@ -100,15 +69,7 @@
             body: JSON.stringify({
                 avatar: data.avatar
               })
-        }).then((res) => {
-            console.log(res);
-            if (res.ok) {
-                
-                return res.json()
-            }
-            
-            return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
-        });
+        }).then(this._checkResponse);
     }
 
 
@@ -118,15 +79,7 @@
         return fetch(`${this._url}cards/likes/${cardId}/`, {
             method: 'PUT',
             headers: this._headers,
-      }).then((res) => {
-        console.log(res);
-        if (res.ok) {
-            
-            return res.json()
-        }
-        
-        return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
-    });
+      }).then(this._checkResponse);
     }
 
     //приватный метод по снятию лайка
@@ -135,15 +88,7 @@
         return fetch(`${this._url}cards/likes/${cardId}/`, {
             method: 'DELETE',
             headers: this._headers,
-      }).then((res) => {
-        console.log(res);
-        if (res.ok) {
-            
-            return res.json()
-        }
-        
-        return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
-    });
+      }).then(this._checkResponse);
     }
 
 
@@ -164,15 +109,7 @@
         return fetch(`${this._url}cards/${cardId}/`, {
             method: 'DELETE',
             headers: this._headers,
-      }).then((res) => {
-          console.log(res);
-        if (res.ok) {
-            
-            return res.json()
-        }
-        
-        return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
-    });
+      }).then(this._checkResponse);
     }
 
 
@@ -183,7 +120,7 @@ const api = new Api({
     url: "https://api.frontend.timofeus91.nomoredomains.icu/", 
     headers: {
         "content-type": "application/json",
-        'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
         
     }
 });

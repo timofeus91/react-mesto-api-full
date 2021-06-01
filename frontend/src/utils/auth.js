@@ -1,6 +1,5 @@
 const checkResponse = (res) => {
     if (res.ok) {
-        console.log(res);
         return res.json()
     }
 
@@ -18,15 +17,7 @@ export const register = (data) => {
         body: JSON.stringify(
           {email: data.email, password: data.password}
           )
-      }).then((res) => {
-        console.log(res);
-        if (res.ok) {
-            
-            return res.json()
-        }
-        
-        return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
-    });
+      }).then(this._checkResponse)
 }
 
 export const authorize  = (data) => {
@@ -38,7 +29,7 @@ export const authorize  = (data) => {
         body: JSON.stringify(
           {email: data.email, password: data.password}
           )
-      }).then(res) 
+      }).then(this._checkResponse)
 }
 
 export const checkToken = (token) => {
