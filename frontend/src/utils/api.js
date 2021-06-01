@@ -12,10 +12,8 @@
 
     _checkResponse(res) {
         if (res.ok) {
-            console.log(res);
             return res.json()
         }
-        console.log(res);
         return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
     }
 
@@ -25,11 +23,12 @@
        return fetch(`${this._url}cards`, {
              headers: this._headers, 
         }).then((res) => {
+            console.log(res);
             if (res.ok) {
-                console.log(`Прошло удачно ${res}`);
+                
                 return res.json()
             }
-            console.log(`Прошло плохо ${res}`);
+            
             return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
         });
     }
@@ -45,11 +44,12 @@
                   link: data.link,
               })
         }).then((res) => {
+            console.log(res);
             if (res.ok) {
-                console.log(`Прошло удачно ${res}`);
+                
                 return res.json()
             }
-            console.log(`Прошло плохо ${res}`);
+            
             return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
         });
     }
@@ -60,11 +60,12 @@
         return fetch(`${this._url}users/me`, {
               headers: this._headers,
         }).then((res) => {
+            console.log(res);
             if (res.ok) {
-                console.log(`Прошло удачно ${res}`);
+                
                 return res.json()
             }
-            console.log(`Прошло плохо ${res}`);
+            
             return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
         });
     }
@@ -80,11 +81,12 @@
                 about: data.about,
               })
         }).then((res) => {
+            console.log(res);
             if (res.ok) {
-                console.log(`Прошло удачно ${res}`);
+                
                 return res.json()
             }
-            console.log(`Прошло плохо ${res}`);
+            
             return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
         });
     }
@@ -99,11 +101,12 @@
                 avatar: data.avatar
               })
         }).then((res) => {
+            console.log(res);
             if (res.ok) {
-                console.log(`Прошло удачно ${res}`);
+                
                 return res.json()
             }
-            console.log(`Прошло плохо ${res}`);
+            
             return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
         });
     }
@@ -116,11 +119,12 @@
             method: 'PUT',
             headers: this._headers,
       }).then((res) => {
+        console.log(res);
         if (res.ok) {
-            console.log(`Прошло удачно ${res}`);
+            
             return res.json()
         }
-        console.log(`Прошло плохо ${res}`);
+        
         return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
     });
     }
@@ -132,11 +136,12 @@
             method: 'DELETE',
             headers: this._headers,
       }).then((res) => {
+        console.log(res);
         if (res.ok) {
-            console.log(`Прошло удачно ${res}`);
+            
             return res.json()
         }
-        console.log(`Прошло плохо ${res}`);
+        
         return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
     });
     }
@@ -160,11 +165,12 @@
             method: 'DELETE',
             headers: this._headers,
       }).then((res) => {
+          console.log(res);
         if (res.ok) {
-            console.log(`Прошло удачно ${res}`);
+            
             return res.json()
         }
-        console.log(`Прошло плохо ${res}`);
+        
         return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
     });
     }

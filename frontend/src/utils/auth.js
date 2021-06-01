@@ -19,11 +19,12 @@ export const register = (data) => {
           {email: data.email, password: data.password}
           )
       }).then((res) => {
+        console.log(res);
         if (res.ok) {
-            console.log(`Прошло удачно ${res}`);
+            
             return res.json()
         }
-        console.log(`Прошло плохо ${res}`);
+        
         return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
     });
 }
