@@ -32,7 +32,7 @@ export const authorize  = (data) => {
       }).then(this._checkResponse)
 }
 
-export const checkToken = (token) => {
+export const checkToken = (jwt) => {
     return fetch(`${BASE_URL}/users/me`, {
       method: 'GET',
       headers: {
