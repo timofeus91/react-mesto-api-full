@@ -24,7 +24,14 @@
     getInitialCards() {
        return fetch(`${this._url}cards`, {
              headers: this._headers, 
-        }).then(this._checkResponse);
+        }).then((res) => {
+            if (res.ok) {
+                console.log(`Прошло удачно ${res}`);
+                return res.json()
+            }
+            console.log(`Прошло плохо ${res}`);
+            return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
+        });
     }
 
     //метод по добавлению новой карточки
@@ -37,7 +44,14 @@
                   name: data.name,
                   link: data.link,
               })
-        }).then(this._checkResponse);
+        }).then((res) => {
+            if (res.ok) {
+                console.log(`Прошло удачно ${res}`);
+                return res.json()
+            }
+            console.log(`Прошло плохо ${res}`);
+            return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
+        });
     }
 
     //метод по получению информации о пользователе
@@ -45,7 +59,14 @@
     getUserInfo() {
         return fetch(`${this._url}users/me`, {
               headers: this._headers,
-        }).then(this._checkResponse);
+        }).then((res) => {
+            if (res.ok) {
+                console.log(`Прошло удачно ${res}`);
+                return res.json()
+            }
+            console.log(`Прошло плохо ${res}`);
+            return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
+        });
     }
 
     //метод по изменению информации о пользователе
@@ -58,7 +79,14 @@
                 name: data.name,
                 about: data.about,
               })
-        }).then(this._checkResponse);
+        }).then((res) => {
+            if (res.ok) {
+                console.log(`Прошло удачно ${res}`);
+                return res.json()
+            }
+            console.log(`Прошло плохо ${res}`);
+            return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
+        });
     }
 
     //метод по смене аватарки
@@ -70,7 +98,14 @@
             body: JSON.stringify({
                 avatar: data.avatar
               })
-        }).then(this._checkResponse);
+        }).then((res) => {
+            if (res.ok) {
+                console.log(`Прошло удачно ${res}`);
+                return res.json()
+            }
+            console.log(`Прошло плохо ${res}`);
+            return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
+        });
     }
 
 
@@ -80,7 +115,14 @@
         return fetch(`${this._url}cards/likes/${cardId}/`, {
             method: 'PUT',
             headers: this._headers,
-      }).then(this._checkResponse);
+      }).then((res) => {
+        if (res.ok) {
+            console.log(`Прошло удачно ${res}`);
+            return res.json()
+        }
+        console.log(`Прошло плохо ${res}`);
+        return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
+    });
     }
 
     //приватный метод по снятию лайка
@@ -89,7 +131,14 @@
         return fetch(`${this._url}cards/likes/${cardId}/`, {
             method: 'DELETE',
             headers: this._headers,
-      }).then(this._checkResponse);
+      }).then((res) => {
+        if (res.ok) {
+            console.log(`Прошло удачно ${res}`);
+            return res.json()
+        }
+        console.log(`Прошло плохо ${res}`);
+        return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
+    });
     }
 
 
@@ -110,7 +159,14 @@
         return fetch(`${this._url}cards/${cardId}/`, {
             method: 'DELETE',
             headers: this._headers,
-      }).then(this._checkResponse);
+      }).then((res) => {
+        if (res.ok) {
+            console.log(`Прошло удачно ${res}`);
+            return res.json()
+        }
+        console.log(`Прошло плохо ${res}`);
+        return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
+    });
     }
 
 
