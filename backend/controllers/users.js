@@ -6,6 +6,7 @@ const AuthorizationError = require('../errors/AuthorizationError.js');
 const ValidationError = require('../errors/ValidationError.js');
 const ConflictError = require('../errors/ConflictError.js');
 const Error500 = require('../errors/Error500.js');
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 module.exports.getUsers = (req, res, next) => {
   User.find({})
@@ -148,7 +149,7 @@ module.exports.login = (req, res, next) => {
     .then((user) => {
       const token = jwt.sign(
         { _id: user._id },
-        'super-strong-secret',
+        NODE_ENV === 'production' ? JWT_SECRET : 'super-strong-secret',
         { expiresIn: '7d' },
       );
 
