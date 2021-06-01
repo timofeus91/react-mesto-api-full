@@ -15,7 +15,7 @@
             console.log(res);
             return res.json()
         }
-
+        console.log(res);
         return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
     }
 
