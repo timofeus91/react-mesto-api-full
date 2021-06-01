@@ -12,6 +12,7 @@
 
     _checkResponse(res) {
         if (res.ok) {
+            console.log(res);
             return res.json()
         }
 

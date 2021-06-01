@@ -1,5 +1,6 @@
 const checkResponse = (res) => {
     if (res.ok) {
+        console.log(res);
         return res.json()
     }
 
@@ -29,7 +30,7 @@ export const authorize  = (data) => {
         body: JSON.stringify(
           {email: data.email, password: data.password}
           )
-      }).then(checkResponse)
+      }).then(res) 
 }
 
 export const checkToken = (token) => {
