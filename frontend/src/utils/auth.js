@@ -17,7 +17,7 @@ export const register = (data) => {
         body: JSON.stringify(
           {email: data.email, password: data.password}
           )
-      }).then(this._checkResponse)
+      }).then(checkResponse)
 }
 
 export const authorize  = (data) => {
@@ -29,7 +29,7 @@ export const authorize  = (data) => {
         body: JSON.stringify(
           {email: data.email, password: data.password}
           )
-      }).then(this._checkResponse)
+      }).then(checkResponse)
 }
 
 export const checkToken = (jwt) => {

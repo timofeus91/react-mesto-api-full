@@ -4,24 +4,24 @@ const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 const { celebrate, Joi } = require('celebrate');
 const validator = require('validator');
-const rateLimit = require('express-rate-limit');
+//const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
+const cors = require('cors');
 const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const cors = require('cors');
 
 const { PORT = 3000 } = process.env;
 
-const limiter = rateLimit({
+/*const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
-});
+}); */
 
 const app = express();
 
 app.use(cors());
-app.use(limiter);
+//app.use(limiter);
 app.use(helmet());
 
 app.use(bodyParser.json());
