@@ -36,6 +36,7 @@ module.exports.getUser = (req, res, next) => {
 };
 
 module.exports.getUserMe = (req, res, next) => {
+  console.log(req);
   User.findById(req.user._id)
     .orFail(new Error('NotFound'))
     .then((user) => res.status(200).send(user))
@@ -148,6 +149,8 @@ module.exports.login = (req, res, next) => {
     })
     // аутентификация успешна
     .then((user) => {
+      console.log(user);
+      debugger;
       const token = jwt.sign(
         { _id: user._id },
         NODE_ENV === 'production' ? JWT_SECRET : 'super-strong-secret',

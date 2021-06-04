@@ -117,10 +117,10 @@
 
 
 const api = new Api({
-    url: "https://api.frontend.timofeus91.nomoredomains.icu/", 
+    url: "http://localhost:3005/", 
     headers: {
         "content-type": "application/json",
-        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'authorization': `Bearer ${localStorage.getItem('jwt')}`,
         
     }
 });
