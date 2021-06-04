@@ -149,8 +149,6 @@ module.exports.login = (req, res, next) => {
     })
     // аутентификация успешна
     .then((user) => {
-      console.log(user);
-      debugger;
       const token = jwt.sign(
         { _id: user._id },
         NODE_ENV === 'production' ? JWT_SECRET : 'super-strong-secret',
