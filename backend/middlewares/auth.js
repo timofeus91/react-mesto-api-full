@@ -3,19 +3,15 @@ const AuthorizationError = require('../errors/AuthorizationError.js');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
 
-
-const extractBearerToken = (header) => header.replace('Bearer ', '');
-
 // eslint-disable-next-line consistent-return
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
-
 
   if (!authorization || !authorization.startsWith('Bearer ')) {
     throw new AuthorizationError('Неправильные почта или пароль');
   }
 
-  const token = extractBearerToken(authorization);
+  const token = authorization.replace('Bearer ', '');
   let payload;
 
   try {
