@@ -14,7 +14,7 @@ module.exports.getUsers = (req, res, next) => {
     .then((users) => res.status(200).send(users))
     // eslint-disable-next-line no-unused-vars
     .catch((err) => {
-      throw new Error500('Ошибка по умолчанию. Проверь код');
+      throw new Error500('Ошибка сервера');
     })
     .catch(next);
 };
@@ -29,7 +29,7 @@ module.exports.getUserMe = (req, res, next) => {
       } else if (err.message === 'NotFound') {
         throw new NoUserFoundErrod('По данному id пользователь не найден');
       } else {
-        throw new Error500('Ошибка по умолчанию. Проверь код');
+        throw new Error500('Ошибка сервера');
       }
     })
     .catch(next);
@@ -60,7 +60,7 @@ module.exports.createUser = (req, res, next) => {
       } else if (err.name === 'MongoError' && err.code === 11000) {
         throw new ConflictError('Пользователь с такими данными уже существует');
       } else {
-        throw new Error500('Ошибка по умолчанию. Проверь код');
+        throw new Error500('Ошибка сервера');
       }
     })
     .catch(next);
@@ -83,7 +83,7 @@ module.exports.updateInfo = (req, res, next) => {
       } else if (err.name === 'CastError') {
         throw new ValidationError('Переданы некорректные данные');
       } else {
-        throw new Error500('Ошибка по умолчанию. Проверь код');
+        throw new Error500('Ошибка сервера');
       }
     })
     .catch(next);
@@ -106,7 +106,7 @@ module.exports.updateAvatar = (req, res, next) => {
       } else if (err.name === 'CastError') {
         throw new ValidationError('Переданы некорректные данные');
       } else {
-        throw new Error500('Ошибка по умолчанию. Проверь код');
+        throw new Error500('Ошибка сервера');
       }
     })
     .catch(next);
@@ -158,7 +158,7 @@ module.exports.getUser = (req, res, next) => {
       } else if (err.message === 'NotFound') {
         throw new NoUserFoundErrod('По данному id пользователь не найден');
       } else {
-        throw new Error500('Ошибка по умолчанию. Проверь код');
+        throw new Error500('Ошибка сервера');
       }
     })
     .catch(next);

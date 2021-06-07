@@ -12,7 +12,7 @@ module.exports.getCards = (req, res, next) => {
   Card.find({})
     .then((cards) => res.status(200).send(cards))
     .catch((err) => {
-      throw new Error500('Ошибка по умолчанию. Проверь код');
+      throw new Error500('Ошибка сервера');
     })
     .catch(next);
 };
@@ -26,7 +26,7 @@ module.exports.createCard = (req, res, next) => {
       if (err.name === 'ValidationError') {
         throw new NoCardFoundError('По данному id карточка не найдена');
       } else {
-        throw new Error500('Ошибка по умолчанию. Проверь код');
+        throw new Error500('Ошибка сервера');
       }
     })
     .catch(next);
@@ -48,7 +48,7 @@ module.exports.deleteCard = (req, res, next) => {
         if (err.name === 'CastError') {
           throw new ValidationError('Переданы некорректные данные');
         } else {
-          throw new Error500('Ошибка по умолчанию. Проверь код');
+          throw new Error500('Ошибка сервера');
         }
       })
       .catch(next);
@@ -70,7 +70,7 @@ module.exports.likeCard = (req, res, next) => {
       } else if (err.message === 'NotFound') {
         throw new NoCardFoundError('По данному id карточка не найдена');
       } else {
-        throw new Error500('Ошибка по умолчанию. Проверь код');
+        throw new Error500('Ошибка сервера');
       }
     })
     .catch(next);
@@ -90,7 +90,7 @@ module.exports.dislikeCard = (req, res, next) => {
       } else if (err.message === 'NotFound') {
         throw new NoCardFoundError('По данному id карточка не найдена');
       } else {
-        throw new Error500('Ошибка по умолчанию. Проверь код');
+        throw new Error500('Ошибка сервера');
       }
     })
     .catch(next);
