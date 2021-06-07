@@ -80,4 +80,5 @@
 `npm run start` — запускает сервер   
 `npm run dev` — запускает сервер с hot-reload
 
-* [Ссылка на проектную работу](https://github.com/timofeus91/express-mesto)
+* [Ссылка на проектную работу](http://frontend.timofeus91.nomoredomains.icu/)
+* [Ссылка на сервер](https://api.frontend.timofeus91.nomoredomains.icu/)
