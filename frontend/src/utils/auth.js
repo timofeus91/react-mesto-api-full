@@ -5,8 +5,8 @@ const checkResponse = (res) => {
 
     return Promise.reject(`Сервер недоступен. Ошибка: ${res.status}.`);
 }
-//В версии которая задеплоина указывается url https://api.frontend.timofeus91.nomoredomains.icu
-export const BASE_URL = 'http://localhost:3005';
+//В версии которая задеплоина указывается url https://api.frontend.timofeus91.nomoredomains.icu . При работе на локальном сервере сменить на http://localhost:3005
+export const BASE_URL = 'https://api.frontend.timofeus91.nomoredomains.icu';
 
 export const register = (data) => {
     return fetch(`${BASE_URL}/signup`, {

@@ -11,7 +11,8 @@ const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const { PORT = 3005 } = process.env;
+// при работе на локальном сервере менять порт на 3005
+const { PORT = 3000 } = process.env;
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,

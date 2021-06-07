@@ -116,9 +116,9 @@
 
 }
 
-//В версии которая задеплоина указывается url https://api.frontend.timofeus91.nomoredomains.icu/
+//В версии которая задеплоина указывается url https://api.frontend.timofeus91.nomoredomains.icu/ При работе на локальном сервере сменить на http://localhost:3005/
 const api = new Api({
-    url: "http://localhost:3005/", 
+    url: "https://api.frontend.timofeus91.nomoredomains.icu/", 
     headers: {
         "content-type": "application/json",
         'authorization': `Bearer ${localStorage.getItem('jwt')}`,
