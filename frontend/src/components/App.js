@@ -88,6 +88,7 @@ function App() {
         setIsAddPlacePopupOpen(true);
     }
 
+  
 
     //обработчик по закрытию попапов
     function closeAllPopups() {
@@ -98,6 +99,23 @@ function App() {
         setIsInfoTooltip(false);
     }
 
+    //функция для закрытия попапов по ESC
+    function handleEscClosePopup(evt) {
+        if (evt.key === 'Escape') {
+          closeAllPopups();
+        }
+      }
+
+    //эффект по установке и снятию функции закрытия попапа по ESC
+    React.useEffect(() => {
+        
+        document.addEventListener('keydown', handleEscClosePopup);
+        return () => {
+          document.removeEventListener('keydown', handleEscClosePopup);
+        }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [])
+
     //обработчик для открытия большого варианта фото
     function handleCardClick(card) {
         setSelectedCard(card);
@@ -107,12 +125,12 @@ function App() {
     function handleCardLike(card) {
 
         // Снова проверяем, есть ли уже лайк на этой карточке
-        const isLiked = card.likes.some(i => i._id === currentUser._id);
+        const isLiked = card.likes.some(i => i._id === currentUser.id);
         
         // Отправляем запрос в API и получаем обновлённые данные карточки
-        api.changeLikeCardStatus(card.id, !isLiked)
+        api.changeLikeCardStatus(card._id, !isLiked)
             .then((newCard) => {
-                setCards(state => state.map((c) => c._id === card.id ? newCard : c)); 
+                setCards(state => state.map((c) => c._id === card._id ? newCard : c)); 
             })
             .catch((err) => {
                 console.log(`Произошла ошибка - ${err}`);
@@ -121,9 +139,9 @@ function App() {
 
     //функция по удалению карточки с использованием api
     function handleCardDelete(card) {
-        api.deleteCard(card.id)
+        api.deleteCard(card._id)
             .then((deleteCard) => {
-                setCards(state => state.filter((c) => c._id === card.id ? null : c));
+                setCards(state => state.filter((c) => c._id === card._id ? null : c));
             })
             .catch((err) => {
                 console.log(`Произошла ошибка - ${err}`);

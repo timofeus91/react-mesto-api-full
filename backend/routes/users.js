@@ -3,16 +3,11 @@ const { celebrate, Joi } = require('celebrate');
 const validator = require('validator');
 
 const {
-  getUsers, getUser, updateInfo, updateAvatar, getUserMe,
+  getUsers, updateInfo, updateAvatar, getUserMe,
 } = require('../controllers/users');
 
 router.get('/users', getUsers);
 
-router.get('/users/:userId', celebrate({
-  params: Joi.object().keys({
-    id: Joi.string().hex().length(24),
-  }),
-}), getUser);
 router.get('/users/me', getUserMe);
 
 router.patch('/users/me', celebrate({

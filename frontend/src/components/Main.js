@@ -40,7 +40,7 @@ function Main({onEditAvatar, onEditProfile, onAddPlace, cards, onCardClick, onCa
                             onCardClick={onCardClick}
                             owner = {item.owner}
                             onCardLike = {onCardLike}
-                            id = {item._id}
+                            _id = {item._id}
                             onCardDelete = {onCardDelete}
                             
                             

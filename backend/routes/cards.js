@@ -8,7 +8,7 @@ const {
 
 const hexValidation = celebrate({
   params: Joi.object().keys({
-    id: Joi.string().hex().length(24),
+    cardId: Joi.string().hex().length(24),
   }),
 });
 

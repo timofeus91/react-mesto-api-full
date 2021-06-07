@@ -19,24 +19,7 @@ module.exports.getUsers = (req, res, next) => {
     .catch(next);
 };
 
-module.exports.getUser = (req, res, next) => {
-  User.findById(req.params.userId)
-    .orFail(new Error('NotFound'))
-    .then((user) => res.status(200).send(user))
-    .catch((err) => {
-      if (err.name === 'CastError') {
-        throw new ValidationError('Переданы некорректные данные');
-      } else if (err.message === 'NotFound') {
-        throw new NoUserFoundErrod('По данному id пользователь не найден');
-      } else {
-        throw new Error500('Ошибка по умолчанию. Проверь код');
-      }
-    })
-    .catch(next);
-};
-
 module.exports.getUserMe = (req, res, next) => {
-  console.log(req);
   User.findById(req.user._id)
     .orFail(new Error('NotFound'))
     .then((user) => res.status(200).send(user))

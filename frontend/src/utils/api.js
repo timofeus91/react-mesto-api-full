@@ -43,7 +43,8 @@
 
     getUserInfo() {
         return fetch(`${this._url}users/me`, {
-              headers: this._headers,
+            method: 'GET',
+            headers: this._headers,
         }).then(this._checkResponse);
     }
 
@@ -76,7 +77,7 @@
     //приватный метод по установке лайка
 
     _putLike(cardId) {
-        return fetch(`${this._url}cards/likes/${cardId}/`, {
+        return fetch(`${this._url}cards/${cardId}/likes/`, {
             method: 'PUT',
             headers: this._headers,
       }).then(this._checkResponse);
@@ -85,7 +86,7 @@
     //приватный метод по снятию лайка
 
     _removeLike(cardId) {
-        return fetch(`${this._url}cards/likes/${cardId}/`, {
+        return fetch(`${this._url}cards/${cardId}/likes/`, {
             method: 'DELETE',
             headers: this._headers,
       }).then(this._checkResponse);
@@ -115,7 +116,7 @@
 
 }
 
-
+//В версии которая задеплоина указывается url https://api.frontend.timofeus91.nomoredomains.icu/
 const api = new Api({
     url: "http://localhost:3005/", 
     headers: {
