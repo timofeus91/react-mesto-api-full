@@ -41,34 +41,6 @@ function App() {
     const [isAuthReqSuccess, setIsAuthReqSuccess] = React.useState(false);
     const history = useHistory();
 
-
-    //Загружаем карточки с сервера. Проставлена зависимость. 
-    React.useEffect(() => {
-        
-        api.getInitialCards()
-            .then(cards => {
-                setCards(cards);
-            })
-
-            .catch((err) => {
-                console.log(`Произошла ошибка - ${err}`);
-            })
-        
-    }, []);
-
-
-    //эффект для получения информации о пользователе
-    React.useEffect(() => {
-        api.getUserInfo()
-        .then(userInfo => {
-            setCurrentUser(userInfo);
-        })
-        .catch((err) => {
-            console.log(`Произошла ошибка - ${err}`);
-        })
-    }, []);
-    
-
     //обработчки для открытия попапов
 
     function handleInfoTooltip() {
@@ -238,6 +210,34 @@ function App() {
             }
         
     }, []);
+
+        //Загружаем карточки с сервера. Проставлена зависимость. 
+        React.useEffect(() => {
+            if (loggedIn) {
+            api.getInitialCards()
+                .then(cards => {
+                    setCards(cards);
+                })
+    
+                .catch((err) => {
+                    console.log(`Произошла ошибка - ${err}`);
+                })
+            }
+        }, [loggedIn]);
+    
+    
+        //эффект для получения информации о пользователе
+        React.useEffect(() => {
+            if (loggedIn) {
+            api.getUserInfo()
+            .then(userInfo => {
+                setCurrentUser(userInfo);
+            })
+            .catch((err) => {
+                console.log(`Произошла ошибка - ${err}`);
+            })
+        }
+        }, [loggedIn]);
     
 
 
